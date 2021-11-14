@@ -26,6 +26,7 @@ export class NewEmployeeComponent implements OnInit {
   saveForm(){
     this.service.addEmployee(this.formGroup.value).subscribe((response) => {
       console.log('response ', response);
+      alert('Data added successfully')
       this.refreshList.emit("refresh");
     })
   }
