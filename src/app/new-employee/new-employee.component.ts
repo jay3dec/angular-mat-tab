@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import Employee from '../model/employee';
 import { DataService } from '../service/data.service';
 
 @Component({
@@ -12,6 +11,7 @@ export class NewEmployeeComponent implements OnInit {
   
   showEmployee: Boolean = true;
   formGroup! : FormGroup;
+  @Output() refreshList = new EventEmitter();
   constructor(private formBuilder : FormBuilder, private service : DataService) { }
 
   ngOnInit() {
@@ -26,6 +26,7 @@ export class NewEmployeeComponent implements OnInit {
   saveForm(){
     this.service.addEmployee(this.formGroup.value).subscribe((response) => {
       console.log('response ', response);
+      this.refreshList.emit("refresh");
     })
   }
 
