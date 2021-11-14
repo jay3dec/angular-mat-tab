@@ -1,0 +1,23 @@
+<form [formGroup]="formGroup">
+  <div class="form-group display-flex">
+    <div>
+      <input type="text" autocomplete="new-password" formControlName="fName" class="form-control"
+        placeholder="First Name">
+    </div>
+    <div>
+      <input type="text" autocomplete="new-password" formControlName="lName" class="form-control"
+        placeholder="Last Name">
+    </div>
+  </div>
+  <div class="form-group display-flex">
+    <div>
+      <input type="number" formControlName="age" class="form-control" placeholder="Age">
+    </div>
+    <div>
+      <input type="text" autocomplete="new-password" formControlName="country" class="form-control"
+        placeholder="Country">
+    </div>
+  </div>
+  <button type="button" (click)="saveForm()" class="btn btn-primary">Submit</button>
+</form>
+

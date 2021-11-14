@@ -1,0 +1,10 @@
+.display-flex{
+    display: flex;
+    padding: 10px 0px 10px 0px;
+    width: 100%;
+}
+
+.display-flex div{
+    width: 100%;
+    margin: 5px;
+}

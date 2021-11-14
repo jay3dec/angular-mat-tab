@@ -8,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'material-tabs';
 
+  a = 13;
+
   tabIndex : Tabs = Tabs.New_Employees;
 
   ngOnInit(){
-    this.setTab(Tabs.All_Employees);
+    
   }
 
   setTab(tab : Tabs){
