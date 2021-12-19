@@ -1,5 +1,5 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { DataService } from './service/data.service';
 
 @Component({
@@ -15,6 +15,8 @@ export class AppComponent implements OnInit {
   tabIndex : Tabs = Tabs.New_Employees;
   data :any = [];
 
+  dataSubject : Subject<[]> = new Subject();
+
   constructor(private service : DataService){}
 
   ngOnInit(){
@@ -25,6 +27,7 @@ export class AppComponent implements OnInit {
     this.service.getUsers().subscribe((response:any) => {
       this.data = this.data.concat(response);
       console.log('got data', this.data);
+      this.dataSubject.next(this.data);
     })
   }
 
