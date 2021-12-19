@@ -1,6 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
+import { map } from 'rxjs/operators';
 import Employee from '../model/employee';
+import { delay } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +23,7 @@ export class DataService {
     country : 'India'
   }];
 
-  constructor() { }
+  constructor(private http : HttpClient) { }
 
   getEmployees(){
     return of([...this.employees]);
@@ -31,6 +35,21 @@ export class DataService {
       status : 200,
       message : "Data inserted"
     })
+  }
+
+  getUsers(){
+    return this.http.get('https://jsonplaceholder.typicode.com/users')
+      .pipe(
+        //delay(3000),
+        map((response:any) => {
+          return response.map((r:any) => {
+            return {
+              name : r['name'],
+              id : r['id']
+            }
+          })
+        })
+      )
   }
 
 }

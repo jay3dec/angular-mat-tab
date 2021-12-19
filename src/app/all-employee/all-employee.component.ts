@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, Input, OnInit } from '@angular/core';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import Employee from '../model/employee';
 import { DataService } from '../service/data.service';
 
@@ -12,6 +12,7 @@ export class AllEmployeeComponent implements OnInit {
 
   allEmployees : Employee[] = [];
   sub! : Subscription;
+  @Input() users : any = [];
   constructor(private service : DataService) { }
 
   ngOnInit(): void {

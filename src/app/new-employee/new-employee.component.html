@@ -18,6 +18,16 @@
         placeholder="Country">
     </div>
   </div>
+  <div class="form-group display-flex">
+    <div>
+      <select>
+        <option *ngFor="let user of users" value="user.id">
+          {{user.name}}
+        </option>
+      </select>
+    </div>
+    
+  </div>
   <button type="button" (click)="saveForm()" class="btn btn-primary">Submit</button>
 </form>
 

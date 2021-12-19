@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { BehaviorSubject } from 'rxjs';
 import Employee from '../model/employee';
 import { DataService } from '../service/data.service';
 
@@ -12,6 +13,7 @@ export class NewEmployeeComponent implements OnInit {
   
   showEmployee: Boolean = true;
   formGroup! : FormGroup;
+  @Input() users : any = [];
   constructor(private formBuilder : FormBuilder, private service : DataService) { }
 
   ngOnInit() {
@@ -20,7 +22,7 @@ export class NewEmployeeComponent implements OnInit {
       lName : [''],
       age : [0],
       country : ['']
-    })
+    });
   }
 
   saveForm(){

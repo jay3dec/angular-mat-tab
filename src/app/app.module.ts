@@ -8,6 +8,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { NewEmployeeComponent } from './new-employee/new-employee.component';
 import { AllEmployeeComponent } from './all-employee/all-employee.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    MatTabsModule
+    MatTabsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
