@@ -27,7 +27,9 @@ export class AppComponent implements OnInit {
     this.service.getUsers().subscribe((response:any) => {
       this.data = this.data.concat(response);
       console.log('got data', this.data);
+      console.log('triggering next..');
       this.dataSubject.next(this.data);
+      console.log('triggered next..');
     })
   }
 

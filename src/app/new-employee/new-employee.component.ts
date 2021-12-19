@@ -26,7 +26,7 @@ export class NewEmployeeComponent implements OnInit {
       age : [0],
       country : ['']
     });
-    this.parseData();
+    //this.parseData();
     this.sub.subscribe((response:any)=>{
       this.users = response;
     })
@@ -38,9 +38,9 @@ export class NewEmployeeComponent implements OnInit {
   //     this.parseData();
   // }
 
-  parseData(){
-    this.users = this.data;
-  }
+  // parseData(){
+  //   this.users = this.data;
+  // }
 
   saveForm(){
     this.service.addEmployee(this.formGroup.value).subscribe((response) => {

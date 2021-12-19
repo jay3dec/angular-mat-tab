@@ -19,15 +19,18 @@ export class AllEmployeeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getEmployees();
-    this.parseData();
+    //this.parseData();
+    console.log('About to Subscribe');
     this.sub.subscribe((response)=>{
       this.users = response;
     })
+    console.log('Done Subscribe');
+
   }
 
-  parseData(){
-    this.users = this.data;
-  }
+  // parseData(){
+  //   this.users = this.data;
+  // }
 
   // ngOnChanges(changes: SimpleChanges): void {
   //     console.log('param changes ', changes);
