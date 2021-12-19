@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
 import Employee from '../model/employee';
@@ -9,11 +9,12 @@ import { DataService } from '../service/data.service';
   templateUrl: './new-employee.component.html',
   styleUrls: ['./new-employee.component.css']
 })
-export class NewEmployeeComponent implements OnInit {
+export class NewEmployeeComponent implements OnInit, OnChanges {
   
   showEmployee: Boolean = true;
   formGroup! : FormGroup;
-  @Input() users : any = [];
+  @Input() data : any = [];
+  users:any = [];
   constructor(private formBuilder : FormBuilder, private service : DataService) { }
 
   ngOnInit() {
@@ -23,6 +24,17 @@ export class NewEmployeeComponent implements OnInit {
       age : [0],
       country : ['']
     });
+    this.parseData();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+      console.log('param changes ', changes);
+      if(changes.data.firstChange) return;
+      this.parseData();
+  }
+
+  parseData(){
+    this.users = this.data;
   }
 
   saveForm(){

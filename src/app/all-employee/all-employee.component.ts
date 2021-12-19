@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import Employee from '../model/employee';
 import { DataService } from '../service/data.service';
@@ -8,15 +8,27 @@ import { DataService } from '../service/data.service';
   templateUrl: './all-employee.component.html',
   styleUrls: ['./all-employee.component.css']
 })
-export class AllEmployeeComponent implements OnInit {
+export class AllEmployeeComponent implements OnInit, OnChanges {
 
   allEmployees : Employee[] = [];
   sub! : Subscription;
-  @Input() users : any = [];
+  @Input() data : any = [];
+  users:any= [];
   constructor(private service : DataService) { }
 
   ngOnInit(): void {
     this.getEmployees();
+    this.parseData();
+  }
+
+  parseData(){
+    this.users = this.data;
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+      console.log('param changes ', changes);
+      if(changes.data.firstChange) return;
+      this.parseData();
   }
 
   getEmployees(){

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { DataService } from './service/data.service';
 
@@ -23,8 +23,8 @@ export class AppComponent implements OnInit {
 
   fetchUsers(){
     this.service.getUsers().subscribe((response:any) => {
-      console.log('got data', response);
-      this.data = response;
+      this.data = this.data.concat(response);
+      console.log('got data', this.data);
     })
   }
 
